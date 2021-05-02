@@ -1,0 +1,323 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("https://i.pinimg.com/originals/6a/c2/94/6ac2941e7c679b199083bdaa928e5907.png");
+  animation: moveBG 10s linear infinite;
+  overflow: hidden;
+}
+
+@keyframes moveBG {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 700px 0;
+  }
+}
+
+.floor {
+  position: absolute;
+  bottom: 0;
+  height: 65%;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url("https://img.wallpapersafari.com/desktop/1920/1080/5/76/m8sS1g.jpg")
+      center 70px / cover repeat;
+  z-index: -1;
+  width: 100%;
+}
+
+.kirby {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: rgb(253, 61, 141);
+  border: 6px solid #000;
+  position: relative;
+  margin: 0 90px;
+}
+
+.kirby > div {
+  position: absolute;
+}
+
+.kirby__leftEye {
+  width: 35px;
+  height: 80px;
+  border-radius: 46%;
+  top: 22%;
+  left: 33%;
+  /* background: rgb(0, 0, 0); */
+  background-image: linear-gradient(180deg, black, black, blue 78px);
+  border: 5.5px solid black;
+}
+
+.kirby__leftEye::before,
+.kirby__rightEye::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 10%;
+  right: 0;
+  bottom: 0;
+  width: 80%;
+  height: 50%;
+  border-radius: 45%;
+  background-color: #fff;
+}
+
+.kirby__rightEye {
+  width: 35px;
+  height: 80px;
+  border-radius: 46%;
+  top: 22%;
+  left: 55%;
+  /* background: rgb(0, 0, 0); */
+  background-image: linear-gradient(180deg, black, black, blue 78px);
+  border: 5.5px solid black;
+}
+
+.kirby__leftCheek {
+  width: 49px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgb(255 8 95 / 80%);
+  top: 43%;
+  left: 15%;
+  transform: rotate(10deg);
+}
+.kirby__rightCheek {
+  width: 49px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgb(255 8 95 / 80%);
+  top: 43%;
+  left: 67%;
+  transform: rotate(-10deg);
+}
+
+.kirby__mouth {
+  width: 60px;
+  height: 40px;
+  top: 54%;
+  left: 50%;
+  border-radius: 50% 50% 50% 50% / 10% 10% 90% 90%;
+  transform: translateX(-50%);
+  background-color: #90001f;
+  overflow: hidden;
+  border: 4.3px solid black;
+  border-top-width: 3.2px;
+}
+.kirby__mouth::before {
+  position: absolute;
+  width: 50%;
+  height: 80%;
+  border-radius: 70%;
+  transform: translateX(47%) scaleX(1.87);
+  background-color: #ff2c9d;
+  bottom: 0;
+  content: "";
+}
+
+.kirby__mouth::after {
+  position: absolute;
+  width: 100%;
+  height: 47%;
+  border-radius: 77%;
+  /* background-color: rgb(0, 0, 0); */
+  top: 20%;
+  content: "";
+  border: 4px solid black;
+  transform: translateX(-7%);
+  border-bottom-color: transparent;
+}
+
+.kirby__leftLeg,
+.kirby__rightLeg {
+  width: 70%;
+  height: 40%;
+  border-radius: 50%;
+  background-color: #e9003d;
+  bottom: 0;
+  transform: translate(-20%, 30%);
+  z-index: -1;
+  /* border: 5ps solid blanchedalmond; */
+  border: 7px solid black;
+}
+.kirby__rightLeg {
+  transform: translate(63%, 30%);
+}
+
+.kirby__leftArm,
+.kirby__rightArm {
+  width: 50%;
+  height: 80%;
+  background-color: rgb(253, 61, 141);
+  border-radius: 50%;
+  z-index: -1;
+  border: 6px solid #000;
+  left: -10%;
+  transform: rotate(-42deg) translate(9%, -10%);
+}
+
+.kirby__leftArm {
+  animation: waveLeft 0.5s linear infinite alternate;
+}
+
+@keyframes waveLeft {
+  from {
+    transform: rotate(-50deg) translate(9%, -10%);
+  }
+  to {
+    transform: rotate(-20deg) translate(9%, -10%);
+  }
+}
+
+.kirby__rightArm {
+  transform: rotate(118deg) translate(9%, -9%);
+  left: 62%;
+  top: -3%;
+}
+
+/* 2nd kirby */
+
+.kirby:nth-child(2) .kirby__mouth {
+  width: 66px;
+  height: 38px;
+  border-radius: 50%;
+  border: 3.5px solid transparent;
+  border-bottom-color: black;
+  background-color: transparent;
+  transform: scaleY(1.7);
+  left: 38.5%;
+  top: 46%;
+}
+
+.kirby:nth-child(2) .kirby__mouth::before,
+.kirby:nth-child(2) .kirby__mouth::after {
+  position: initial !important;
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  border: transparent;
+}
+
+.halo {
+  width: 89%;
+  height: 30%;
+  border-radius: 50%;
+  border: 8px solid yellow;
+  left: 5%;
+  top: -23%;
+}
+
+/* responsive */
+
+@media (max-width: 600px) {
+  .kirby {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgb(253, 61, 141);
+    border: 6px solid #000;
+    position: relative;
+    /* margin: 0 90px; */
+    /* margin: 0 21px;
+     */
+     margin: 0 0  !important;
+     /* left: -20px; */
+
+  }
+
+  .kirby2nd {
+      left: 10px;
+  }
+
+
+.kirby:nth-child(2){
+      right: 20px;
+  }
+
+  .kirby__leftEye {
+    width: 22px;
+    height: 50px;
+    border-radius: 46%;
+    top: 22%;
+    left: 33%;
+    /* background: rgb(0, 0, 0); */
+    background-image: linear-gradient(180deg, black, black, blue 42px);
+    border: 5.5px solid black;
+  }
+  .kirby__rightEye {
+    width: 22px;
+    height: 50px;
+    border-radius: 46%;
+    top: 22%;
+    left: 55%;
+    /* background: rgb(0, 0, 0); */
+    background-image: linear-gradient(180deg, black, black, blue 42px);
+    border: 5.5px solid black;
+  }
+
+  .kirby__leftCheek {
+    width: 32px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgb(255 8 95 / 80%);
+    top: 43%;
+    left: 8%;
+    transform: rotate(10deg);
+  }
+
+  .kirby__rightCheek {
+    width: 32px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgb(255 8 95 / 80%);
+    top: 43%;
+    left: 72%;
+    transform: rotate(-10deg);
+  }
+
+  .kirby:nth-child(2) .kirby__mouth {
+    width: 50px;
+    height: 38px;
+    border-radius: 50%;
+    border: 3.5px solid transparent;
+    border-bottom-color: black;
+    background-color: transparent;
+    transform: scaleY(1.7);
+    left: 33.5%;
+    top: 40%;
+  }
+  .kirby__mouth {
+    width: 41px;
+    height: 29px;
+    top: 62%;
+    left: 50%;
+    border-radius: 50% 50% 50% 50% / 10% 10% 90% 90%;
+    transform: translateX(-45%);
+    background-color: #90001f;
+    overflow: hidden;
+    border: 4.3px solid black;
+    border-top-width: 3.2px;
+  }
+
+  .floor {
+    position: absolute;
+    bottom: -47px;
+    height: 70%;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+      url(https://img.wallpapersafari.com/desktop/1920/1080/5/76/m8sS1g.jpg) 54% /
+        cover repeat;
+    z-index: -1;
+    width: 135%;
+  }
+}
